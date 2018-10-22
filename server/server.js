@@ -1,22 +1,24 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
-
-app.use(express.json());
-
 let ideas = [];
 
+app.use(express.json());
+app.use(cors());
+
 app.get('/', (req, res) => {
-   res.send('hello world'); 
+  res.send(ideas); 
 });
 
 app.post('/idea', (req, res) => {
-    let idea = {
-        idea: req.body.idea,
-        category: req.body.category
-    };
+  let idea = {
+    idea: req.body.idea,
+    category: req.body.category
+  };
+  ideas.push(idea);
 });
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
