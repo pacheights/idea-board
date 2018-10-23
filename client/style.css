@@ -1,134 +1,152 @@
 h1, h2, h3, h4, h5, h6, p, html, body {
-    margin: 0;
+  margin: 0;
 }
 
 p {
-    font-family: Courier;
-    font-size: 20px;    
+  font-family: Courier;
+  font-size: 20px;    
 }
 
 h1, h2 {
-    font-family: 'Futura', sans-serif;
-    font-weight: lighter;
-    text-align: center; 
+  font-family: 'Futura', sans-serif;
+  font-weight: lighter;
+  text-align: center; 
 }
 
-header {
-    margin: 40px 0;
-    text-align: center;
+header { 
+  margin: 40px 0;
+  text-align: center;
 }
 
 input, label {
-    display: block;
-    width: 300px;
+  display: block; 
+  width: 300px;
 }
 
 input {
-    margin-bottom: 20px;    
-    border: 1px solid black;
+  margin-bottom: 20px;    
+  border: 1px solid black;
 }
 
 textarea {
-    width: 300px;
-    height: 60px;
-    margin-bottom: 20px;
-    border: 1px solid black;
+  width: 300px;
+  height: 60px;
+  margin-bottom: 20px;
+  border: 1px solid black;
 }
 
 .fas {
-    font-size: 32px;
+  font-size: 32px;
 }   
 
 .create-button {
-    margin: 40px 0; 
-    width: 220px;
-    height: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    color: white;  
-    background-color: #4b8fa8;
-    border: 1px solid black;
-    border-radius: 3px;
+  margin: 40px 0; 
+  width: 220px;
+  height: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px; 
+  color: white;  
+  background-color: #4b8fa8; 
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 .idea-form {
-    font-family: 'Courier New', Courier, monospace;
-    display: inline-block;
-    width: 310px;
-    text-align: left; 
-    padding: 30px;  
-    display: none;  
+  font-family: 'Courier New', Courier, monospace;
+  display: inline-block;
+  width: 310px;
+  text-align: left; 
+  padding: 30px;  
+  display: none;  
 }
 
 .idea-submit {
-    border: 1px solid black;
-    border-radius: 3px; 
-    font-family: 'Courier New', Courier, monospace;
+  border: 1px solid black;
+  border-radius: 3px; 
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .idea-category label {
-    float:left;
-    width:94px;
-    margin-right:10px;
-    background-color: #4b8fa8;
-    border-radius:4px;
-    border:1px solid #D0D0D0;
+  float:left;
+  width:94px;
+  margin-right:10px;
+  background-color: #4b8fa8;
+  border-radius:4px;
+  border:1px solid #D0D0D0;
 }
 
 .idea-category input:checked + span {
-    background-color: #6b8fa8;
-    color:#F7F7F7;
+  background-color: #6b8fa8;
+  color:#F7F7F7;
 }
 
 .idea-category input {
-    position:absolute;
-    top:-20px;
+  position:absolute;
+  top:-20px;
 }
 
 .idea-category label span {
-    text-align:center;
-    font-size: 13px;
-    padding: 13px 0px;
-    display:block;
+  text-align:center;
+  font-size: 13px;
+  padding: 13px 0px;
+  display:block;
 }
 
 .list-container {
-    float: left;
-    width: 30%;
-    margin: 0 1.5%;
-    text-align: center;
+  float: left;
+  width: 30%;
+  margin: 0 1.5%;
+  text-align: center;
 }
 
 .list-header {  
-    display: inline-block;
-    margin: 0; 
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid black;
+  display: inline-block;
+  margin: 0; 
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
 }
 
 .list-header-element {
-    float: left;
-    margin: 0 7px;
+  float: left;
+  margin: 0 7px;
 }
 
 .list-content {
-    padding: 10px;
+  padding: 10px;
 }
 
 .idea-category {
-    color: white;
-    float: left;
-    display: inline-flex;
-    margin-bottom: 15px;
+  color: white;
+  float: left;
+  display: inline-flex;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 800px) {
-    .list-header-text {
-        display: none;
-    }
+  .list-header-text {
+    font-size: 16px;
+  }
 
-    p {
-        font-size: 14px;
-    }
+  p {
+    font-size: 14px;
+  }
+
+  .fas {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .list-header-text {
+    font-size: 16px;
+  }
+
+  .fas {
+    font-size: 0px;
+  }
+
+  p {
+    font-size: 13px;
+  }
 }

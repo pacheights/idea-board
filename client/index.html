@@ -1,65 +1,55 @@
 <head>
-    <link rel='stylesheet' href='./style.css'>
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <title>Making Ideas Public</title>
+  <link rel='stylesheet' href='./style.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.1/css/all.css' integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz' crossorigin='anonymous'>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Making Ideas Public</title>
 </head>
 <body>
-    <header>
-        <h1>Various Ideas I Have For Things</h1>
-        <h2>And making them public</h2>
-        <button class='create-button'>Create New Idea</button>
-        <br>
-        <form class='idea-form'>
-            <label for='idea-password'>Password:</label>
-            <input type='password' id='idea-password' name='password'>
-            <label>Category:</label>
-            <div class='idea-category'>
-                <label><input class="category" type='radio' name='category' value='web'><span>Web App</span></label>
-                <label><input class="category" type='radio' name='category' value='mobile'><span>Mobile App</span></label>
-                <label><input class="category" type='radio' name='category' value='other'><span>Other Idea</span></label>
-            </div>
-            <label for='idea-textarea'>Idea:</label>
-            <textarea id='idea-textarea' name='idea'></textarea>
-            <button type='submit' class='idea-submit'>Submit</button>
-        </form>
-    </header>
-    <div class='list-container' id='web'>
-        <div class='list-header'>
-            <i class='list-header-element fas fa-laptop'></i>
-            <h2 class='list-header-element list-header-text'>Web Apps</h2>
-        </div>
-        <div class='list-content'>
-            <p>
-               A web app that guides novice developers through the creation of a Full Stack application step by step 
-            </p>
-        </div>
+  <header>
+    <h1>Various Ideas I Have For Things</h1>
+    <h2>And making them public</h2>
+    <button class='create-button'>Create New Idea</button>
+    <br>
+    <form class='idea-form'>
+      <label for='idea-password'>Password:</label>
+      <input type='password' id='idea-password' name='password'>
+      <label>Category:</label>
+      <div class='idea-category'>
+        <label><input class="category" type='radio' name='category' value='web'><span>Web App</span></label>
+        <label><input class="category" type='radio' name='category' value='mobile'><span>Mobile App</span></label>
+        <label><input class="category" type='radio' name='category' value='other'><span>Other Idea</span></label>
+      </div>
+      <label for='idea-textarea'>Idea:</label>
+      <textarea id='idea-textarea' name='idea'></textarea>
+      <button type='submit' class='idea-submit'>Submit</button>
+    </form>
+  </header>
+  <div class='list-container' id='web'>
+    <div class='list-header'>
+      <i class='list-header-element fas fa-laptop'></i>
+      <h2 class='list-header-element list-header-text'>Web Apps</h2>
     </div>
-    <div class='list-container' id='mobile'>
-        <div class='list-header'>
-            <i class='list-header-element fas fa-mobile'></i>
-            <h2 class='list-header-element list-header-text'>Mobile Apps</h2>
-        </div>
-        <div class='list-content'>
-            <p>
-                
-            </p>
-        </div>
+    <div class='list-content'>
+      <p>
+        A web app that guides novice developers through the creation of a Full Stack application step by step 
+      </p>
     </div>
-    <div class='list-container' id='other'>
-        <div class='list-header'>
-            <i class='list-header-element fas fa-video'></i>
-            <h2 class='list-header-element list-header-text'>Other Ideas</h2>
-            <i class='list-header-element fas fa-music'></i>
-        </div>
-        <div class='list-content'>
-            <p>
-                
-            </p>
-        </div>
+  </div>
+  <div class='list-container' id='mobile'>
+    <div class='list-header'>
+      <i class='list-header-element fas fa-mobile'></i>
+      <h2 class='list-header-element list-header-text'>Mobile Apps</h2>
     </div>
-    <script src='client.js'></script>
+  </div>
+  <div class='list-container' id='other'>
+    <div class='list-header'>
+      <i class='list-header-element fas fa-video'></i>
+      <h2 class='list-header-element list-header-text'>Other Ideas</h2>
+      <i class='list-header-element fas fa-music'></i>
+    </div>
+  </div>
+  <script src='client.js'></script>
 </body>
 </html>    
