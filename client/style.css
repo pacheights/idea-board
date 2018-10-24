@@ -1,3 +1,4 @@
+/* GLOBAL STYLES */
 h1, h2, h3, h4, h5, h6, p, html, body {
   margin: 0;
 }
@@ -34,6 +35,8 @@ textarea {
   margin-bottom: 20px;
   border: 1px solid black;
 }
+
+/* FORM AND BUTTON STYLES */
 
 .fas {
   font-size: 32px;
@@ -92,14 +95,16 @@ textarea {
   display:block;
 }
 
-.list-container {
+/* IDEA LIST STYLES*/
+
+.idea-container {
   float: left;
   width: 30%;
   margin: 0 1.5%;
   text-align: center;
 }
 
-.list-header {  
+.idea-header {  
   display: inline-block;
   margin: 0; 
   padding-bottom: 10px;
@@ -107,13 +112,17 @@ textarea {
   border-bottom: 1px solid black;
 }
 
-.list-header-element {
+.idea-header-element {
   float: left;
   margin: 0 7px;
 }
 
-.list-content {
+.idea-content {
   padding: 10px;
+}
+
+.idea-content p {
+  margin-bottom: 30px;
 }
 
 .idea-category {
@@ -124,7 +133,7 @@ textarea {
 }
 
 @media screen and (max-width: 800px) {
-  .list-header-text {
+  .idea-header-text {
     font-size: 16px;
   }
 
@@ -138,7 +147,7 @@ textarea {
 }
 
 @media screen and (max-width: 600px) {
-  .list-header-text {
+  .idea-header-text {
     font-size: 16px;
   }
 

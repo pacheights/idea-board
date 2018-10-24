@@ -1,7 +1,9 @@
 const createButton = document.querySelector('.create-button');
 const submitButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
-const API_URL = 'http://localhost:3000/idea';
+const API_URL = 'http://localhost:3000/ideas';
+
+listIdeas();
 
 createButton.addEventListener('click', (event) => {
   createButton.style.display = 'none';
@@ -13,7 +15,7 @@ submitButton.addEventListener('click', (event) => {
   const formData = new FormData(ideaForm);
   const category = formData.get('category');
   const idea = formData.get('idea');
-
+  
   fetch(API_URL, {
     method: 'POST',
     body: JSON.stringify({
@@ -23,20 +25,33 @@ submitButton.addEventListener('click', (event) => {
     headers: {
       'content-type': 'application/json'
     }
+  })
+  .then(res => {
+    const containers = document.getElementsByClassName('idea-content');
+    for (let container of containers) {
+      container.innerHTML = '';
+    }
+    listIdeas();
   });
 
   createButton.style.display = 'inline-block';
   ideaForm.style.display = 'none';
 
-  clearForm();
+  ideaForm.reset();
 });
 
-function clearForm() {
-  const textArea = document.querySelector('#idea-textarea');
-  const categories = document.getElementsByClassName('category');
-  
-  for (category of categories) {
-    category.checked = false;
-  }
-  textArea.value = "";
+function listIdeas() {
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(ideas => {
+      ideas.forEach(idea => {
+        const category = idea.category;
+        const elementId = `#idea-content-${category}`;
+        const container = document.querySelector(elementId);
+        const paragraph = document.createElement('p');
+
+        paragraph.textContent = idea.idea;
+        container.appendChild(paragraph);
+      })
+    });
 }

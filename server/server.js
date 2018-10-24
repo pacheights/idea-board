@@ -7,16 +7,17 @@ let ideas = [];
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send(ideas); 
+app.get('/ideas', (req, res) => {
+  res.json(ideas); 
 });
 
-app.post('/idea', (req, res) => {
+app.post('/ideas', (req, res) => {
   let idea = {
     idea: req.body.idea,
     category: req.body.category
   };
   ideas.push(idea);
+  res.send(idea);
 });
 
 app.listen(port, () => {
