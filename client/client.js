@@ -32,11 +32,11 @@ submitButton.addEventListener('click', (event) => {
 });
 
 function clearForm() {
-  const text = document.querySelector('#idea-textarea');
+  const textArea = document.querySelector('#idea-textarea');
   const categories = document.getElementsByClassName('category');
   
   for (category of categories) {
     category.checked = false;
   }
-  text.value = "";
+  textArea.value = "";
 }

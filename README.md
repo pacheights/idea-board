@@ -1,6 +1,6 @@
-# Idea Book![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+# Idea Collection![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-Idea Book is a website that keeps track of all of my app/business/music/film ideas
+Idea Collection is a website that keeps track of all of my app/business/music/film ideas
 
 ## Installation
 
@@ -13,6 +13,7 @@ Idea Book is a website that keeps track of all of my app/business/music/film ide
 
 ```javascript
 npm install 
+npm install -g nodemon
 cd server
 npm start
 ```
