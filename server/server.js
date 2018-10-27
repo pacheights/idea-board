@@ -3,8 +3,8 @@ const cors = require('cors');
 const pg = require('pg');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
+const port = process.env.PORT || 3000;
 const dbConnectionString = '';
 
 app.use(express.json());
@@ -57,3 +57,22 @@ app.post('/ideas', (req, res) => {
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+
+function clearDB() {
+  const database = new pg.Client(dbConnectionString);
+  const getQuery = 'DELETE FROM ideas';
+
+  database.connect((err) => {
+    if (err) {
+      console.log(err);
+    }
+    database.query(postQuery, (err) => {
+      if (err) {
+       console.log(err);
+      }
+      else {
+        database.end();
+      }
+    });
+  });
+}
