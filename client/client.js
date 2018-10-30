@@ -1,8 +1,12 @@
 const createButton = document.querySelector('.create-button');
 const submitButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
+const editButtons = document.getElementsByClassName('edit-button');
+const deleteButtons = document.getElementsByClassName('delete-button');
 const API_URL = 'http://localhost:3000/ideas';
 
+editButtonEventAdder(editButtons);
+deleteButtonEventAdder(deleteButtons);
 listIdeas();
 
 createButton.addEventListener('click', (event) => {
@@ -54,4 +58,20 @@ function listIdeas() {
         container.appendChild(paragraph);
       })
     });
+}
+
+function editButtonEventAdder(elements) {
+  for (let element of elements) {
+    element.addEventListener('click', (event) => {
+      const password = prompt('Please enter the password to edit the idea');
+    });
+  }
+}
+
+function deleteButtonEventAdder(elements) {
+  for (let element of elements) {
+    element.addEventListener('click', (event) => {
+      const password = prompt('Please enter the password to delete the idea');
+    });
+  }
 }

@@ -137,9 +137,13 @@ textarea {
   display: inline-flex;
 }
 
-.single-idea i {
+.edit-button, .delete-button {
+  margin-top: 5px;
   font-size: 20px;
-  margin-top: 2px;
+}
+
+.edit-button:hover, .delete-button:hover {
+  cursor: pointer;
 }
 
 .single-idea p {
@@ -161,24 +165,35 @@ textarea {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .idea-header-text {
-    font-size: 16px;
+    font-size: 26px;
   }
 
   .fas {
-    font-size: 0px;
+    font-size: 32px;
   }
 
   p {
-    font-size: 13px;
+    font-size: 18px;
   }
 
   .single-idea i {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .single-idea p {
-    margin: 0 3px;
+    margin: 0 5px;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  .idea-container {
+    float: none;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 70px;
   }
 }
