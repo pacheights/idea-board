@@ -36,6 +36,17 @@ textarea {
   border: 1px solid black;
 }
 
+.title {
+  font-size: 46px;
+}
+
+.subtitle {
+  margin: 0 auto;
+  font-size: 22px;
+  max-width: 500px;
+  width: 70%;
+}
+
 /* FORM AND BUTTON STYLES */
 
 .fas {
