@@ -5,8 +5,6 @@ const editButtons = document.getElementsByClassName('edit-button');
 const deleteButtons = document.getElementsByClassName('delete-button');
 const API_URL = 'http://localhost:3000/ideas';
 
-editButtonEventAdder(editButtons);
-deleteButtonEventAdder(deleteButtons);
 listIdeas();
 
 createButton.addEventListener('click', (event) => {
@@ -31,10 +29,6 @@ submitButton.addEventListener('click', (event) => {
     }
   })
   .then(res => {
-    const containers = document.getElementsByClassName('idea-content');
-    for (let container of containers) {
-      container.innerHTML = '';
-    }
     listIdeas();
   });
 
@@ -45,17 +39,37 @@ submitButton.addEventListener('click', (event) => {
 });
 
 function listIdeas() {
+  // const containers = document.getElementsByClassName('idea-content');
+  // for (let container of containers) {
+  //   container.innerHTML = '';
+  // }
+
   fetch(API_URL)
     .then(res => res.json())
     .then(ideas => {
       ideas.forEach(idea => {
         const category = idea.category;
-        const elementId = `#idea-content-${category}`;
-        const container = document.querySelector(elementId);
+        const parentElementId = `#idea-content-${category}`;
+        const parentElement = document.querySelector(parentElementId);
+        const container = document.createElement('div');
+        const editButton = document.createElement('i');
         const paragraph = document.createElement('p');
+        const deleteButton = document.createElement('i');
+
+        container.classList = 'single-idea';
+        editButton.classList = 'edit-button fas fa-edit';
+        deleteButton.classList = 'delete-button fas fa-trash-alt';
+        paragraph.classList = 'idea-text';
 
         paragraph.textContent = idea.idea;
+
+        container.appendChild(editButton);
         container.appendChild(paragraph);
+        container.appendChild(deleteButton);
+        parentElement.appendChild(container);
+
+        editButtonEventAdder(editButtons);
+        deleteButtonEventAdder(deleteButtons);
       })
     });
 }
