@@ -3,13 +3,6 @@ const submitButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
 const API_URL = 'http://localhost:3000/ideas';
 
-const clearIdeas = () => {
-  const containers = document.getElementsByClassName('idea-content');
-  for (let container of containers) {
-    container.innerHTML = '';
-  }
-}
-
 const listIdeas = () => {
   clearIdeas();
 
@@ -24,6 +17,13 @@ const listIdeas = () => {
         parentElement.appendChild(ideaElement);
       })
     });
+}
+
+const clearIdeas = () => {
+  const containers = document.getElementsByClassName('idea-content');
+  for (let container of containers) {
+    container.innerHTML = '';
+  }
 }
 
 const createIdeaElement = (idea) => {
