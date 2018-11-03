@@ -1,6 +1,7 @@
 /* GLOBAL STYLES */
 h1, h2, h3, h4, h5, h6, p, html, body {
   margin: 0;
+  padding: 0;
 }
 
 p {
@@ -132,10 +133,6 @@ textarea {
   padding: 10px;
 }
 
-.idea-content p {
-  margin-bottom: 30px;
-}
-
 .idea-category {
   color: white;
   float: left;
@@ -144,7 +141,6 @@ textarea {
 }
 
 .single-idea {
-  /* border: 1px solid black; */
   display: inline-flex;
 }
 
@@ -153,47 +149,39 @@ textarea {
   font-size: 20px;
 }
 
-.edit-button:hover, .delete-button:hover {
+.edit-button:hover, .delete-button:hover, .submit-edit-button:hover {
   cursor: pointer;
 }
 
-.single-idea p {
+.submit-edit-button {
+  margin-top: 1px;
+  font-size: 0px;
+}
+
+.idea-text, .edit-idea-textarea {
   margin: 0 15px;  
   padding: 0; 
 }
 
-@media screen and (max-width: 800px) {
-  .idea-header-text {
-    font-size: 16px;
-  }
-
-  p {
-    font-size: 14px;
-  }
-
-  .fas {
-    font-size: 22px;
-  }
+.single-idea textarea {
+  display: none;
+  width: 100%;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
   .idea-header-text {
     font-size: 26px;
   }
 
-  .fas {
-    font-size: 32px;
-  }
-
   p {
     font-size: 18px;
   }
 
-  .single-idea i {
-    font-size: 18px;
+  .edit-button .delete-button {
+    font-size: 20px;
   }
 
-  .single-idea p {
+  .idea-text {
     margin: 0 5px;
   }
 
