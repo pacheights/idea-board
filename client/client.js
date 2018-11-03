@@ -4,7 +4,7 @@ const ideaForm = document.querySelector('.idea-form');
 const API_URL = 'http://localhost:3000/ideas';
 
 const listIdeas = () => {
-  // clearIdeas();
+  clearIdeas();
 
   fetch(API_URL)
     .then(res => res.json())
@@ -27,51 +27,58 @@ const clearIdeas = () => {
 }
 
 const createIdeaElement = (idea) => {
-  const container = document.createElement('div');
+  const parentContainer = document.createElement('div');
   const editButton = document.createElement('i');
   const submitEditButton = document.createElement('i');
-  const paragraph = document.createElement('p');
-  const editTextArea = document.createElement('textarea');
+  const ideaParagraphElement = document.createElement('p');
+  const editIdeaTextArea = document.createElement('textarea');
+  const cancelEditButton = document.createElement('i');  
   const deleteButton = document.createElement('i');
 
-  container.classList = 'single-idea';
+  parentContainer.classList = 'single-idea';
   editButton.classList = 'edit-button fas fa-edit';
   submitEditButton.classList = 'submit-edit-button fas fa-check';
-  paragraph.classList = 'idea-text';
-  editTextArea.classList = 'edit-idea-textarea';
+  ideaParagraphElement.classList = 'idea-text';
+  editIdeaTextArea.classList = 'edit-idea-textarea';
+  cancelEditButton.classList = 'cancel-edit-button fas fa-times';
   deleteButton.classList = 'delete-button fas fa-trash-alt';
   
-  paragraph.textContent = idea.idea;
-  editButton.addEventListener('click', editButtonEventHandler)
-  deleteButton.addEventListener('click', deleteButtonEventHandler)
+  ideaParagraphElement.textContent = idea.idea;
 
-  container.appendChild(editButton);
-  container.appendChild(submitEditButton);
-  container.appendChild(paragraph);
-  container.appendChild(editTextArea);
-  container.appendChild(deleteButton);
+  editButton.addEventListener('click', (event) => {
+    const ideaTextValue = ideaParagraphElement.innerText;
 
-  return container;
-}
+    editIdeaTextArea.value = ideaTextValue;
+    editButton.style.fontSize = deleteButton.style.fontSize = '0px';
+    submitEditButton.style.fontSize = cancelEditButton.style.fontSize = '20px';
+    editIdeaTextArea.style.display = 'block';
+    ideaParagraphElement.style.display = 'none';
+  });
 
-const editButtonEventHandler = (event) => {
-  // const password = prompt('Please enter the password to edit the idea');
-  const editButton = event.target.parentElement.children[0];
-  const submitEditButton = event.target.parentElement.children[1];
-  const ideaTextElement = event.target.parentElement.children[2];
-  const editTextArea = event.target.parentElement.children[3];
-  const ideaText = ideaTextElement.innerText;
-  const ideaTextNode = document.createTextNode(ideaText);
-  
-  editTextArea.appendChild(ideaTextNode);
-  editButton.style.fontSize = '0px';
-  editTextArea.style.display = 'block';
-  ideaTextElement.style.display = 'none';  
-  submitEditButton.style.fontSize = '20px';
-}
+  deleteButton.addEventListener('click', (event) => {
+    listIdeas();
+  });
 
-const deleteButtonEventHandler = (event) => {
-  const password = prompt('Please enter the password to delete the idea');
+  submitEditButton.addEventListener('click', (event) => {
+    listIdeas();
+  });
+
+  cancelEditButton.addEventListener('click', (event) => {
+    editIdeaTextArea.value = '';
+    editButton.style.fontSize = deleteButton.style.fontSize = '20px';
+    submitEditButton.style.fontSize = cancelEditButton.style.fontSize = '0px';
+    editIdeaTextArea.style.display = 'none';
+    ideaParagraphElement.style.display = 'block';
+  });
+
+  parentContainer.appendChild(editButton);
+  parentContainer.appendChild(submitEditButton);
+  parentContainer.appendChild(ideaParagraphElement);
+  parentContainer.appendChild(editIdeaTextArea);
+  parentContainer.appendChild(cancelEditButton)
+  parentContainer.appendChild(deleteButton);
+
+  return parentContainer;
 }
 
 createButton.addEventListener('click', (event) => {
@@ -82,8 +89,8 @@ createButton.addEventListener('click', (event) => {
 submitButton.addEventListener('click', (event) => {
   event.preventDefault();
   const formData = new FormData(ideaForm);
-  const category = formData.get('category');
   const idea = formData.get('idea');
+  const category = formData.get('category');
   
   fetch(API_URL, {
     method: 'POST',
