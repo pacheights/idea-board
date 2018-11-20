@@ -1,7 +1,8 @@
 const createButton = document.querySelector('.create-button');
-const submitButton = document.querySelector('.idea-submit');
+const submitIdeaButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
 const API_URL = 'http://localhost:3000/ideas';
+const delayInMilliseconds = 100;
 
 const listIdeas = () => {
   clearIdeas();
@@ -27,55 +28,84 @@ const clearIdeas = () => {
 }
 
 const createIdeaElement = (idea) => {
+  
   const parentContainer = document.createElement('div');
   const editButton = document.createElement('i');
   const submitEditButton = document.createElement('i');
-  const ideaParagraphElement = document.createElement('p');
-  const editIdeaTextArea = document.createElement('textarea');
-  const cancelEditButton = document.createElement('i');  
+  const ideaParagraph = document.createElement('p');
+  const editTextArea = document.createElement('textarea');
+  const cancelButton = document.createElement('i');  
   const deleteButton = document.createElement('i');
 
   parentContainer.classList = 'single-idea';
   editButton.classList = 'edit-button fas fa-edit';
   submitEditButton.classList = 'submit-edit-button fas fa-check';
-  ideaParagraphElement.classList = 'idea-text';
-  editIdeaTextArea.classList = 'edit-idea-textarea';
-  cancelEditButton.classList = 'cancel-edit-button fas fa-times';
+  ideaParagraph.classList = 'idea-text';
+  editTextArea.classList = 'edit-idea-textarea';
+  cancelButton.classList = 'cancel-edit-button fas fa-times';
   deleteButton.classList = 'delete-button fas fa-trash-alt';
   
-  ideaParagraphElement.textContent = idea.idea;
+  ideaParagraph.textContent = idea.idea;
 
   editButton.addEventListener('click', (event) => {
-    const ideaTextValue = ideaParagraphElement.innerText;
+    const ideaTextValue = ideaParagraph.innerText;
 
-    editIdeaTextArea.value = ideaTextValue;
+    editTextArea.value = ideaTextValue;
     editButton.style.fontSize = deleteButton.style.fontSize = '0px';
-    submitEditButton.style.fontSize = cancelEditButton.style.fontSize = '20px';
-    editIdeaTextArea.style.display = 'block';
-    ideaParagraphElement.style.display = 'none';
+    submitEditButton.style.fontSize = cancelButton.style.fontSize = '20px';
+    editTextArea.style.display = 'block';
+    ideaParagraph.style.display = 'none';
   });
 
   deleteButton.addEventListener('click', (event) => {
-    listIdeas();
+    const idea = ideaParagraph.innerText;
+
+    fetch(API_URL, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        idea
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => {
+      setTimeout(listIdeas, delayInMilliseconds);
+    });
   });
 
   submitEditButton.addEventListener('click', (event) => {
-    listIdeas();
+    const originalIdea = ideaParagraph.innerText;
+    const editedIdea = editTextArea.value;
+
+    fetch(API_URL, {
+      method: 'PUT',
+      body: JSON.stringify({
+        originalIdea,
+        editedIdea
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => {
+      setTimeout(listIdeas, delayInMilliseconds);
+    });
   });
 
-  cancelEditButton.addEventListener('click', (event) => {
-    editIdeaTextArea.value = '';
+  cancelButton.addEventListener('click', (event) => {
+    editTextArea.value = '';
     editButton.style.fontSize = deleteButton.style.fontSize = '20px';
-    submitEditButton.style.fontSize = cancelEditButton.style.fontSize = '0px';
-    editIdeaTextArea.style.display = 'none';
-    ideaParagraphElement.style.display = 'block';
+    submitEditButton.style.fontSize = cancelButton.style.fontSize = '0px';
+    editTextArea.style.display = 'none';
+    ideaParagraph.style.display = 'block';
   });
 
   parentContainer.appendChild(editButton);
   parentContainer.appendChild(submitEditButton);
-  parentContainer.appendChild(ideaParagraphElement);
-  parentContainer.appendChild(editIdeaTextArea);
-  parentContainer.appendChild(cancelEditButton)
+  parentContainer.appendChild(ideaParagraph);
+  parentContainer.appendChild(editTextArea);
+  parentContainer.appendChild(cancelButton)
   parentContainer.appendChild(deleteButton);
 
   return parentContainer;
@@ -86,7 +116,7 @@ createButton.addEventListener('click', (event) => {
   ideaForm.style.display = 'inline-block';
 });
 
-submitButton.addEventListener('click', (event) => {
+submitIdeaButton.addEventListener('click', (event) => {
   event.preventDefault();
   const formData = new FormData(ideaForm);
   const idea = formData.get('idea');
@@ -103,7 +133,7 @@ submitButton.addEventListener('click', (event) => {
     }
   })
   .then(res => {
-    listIdeas();
+    setTimeout(listIdeas, delayInMilliseconds);
   });
 
   createButton.style.display = 'inline-block';

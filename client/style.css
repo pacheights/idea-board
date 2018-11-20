@@ -129,10 +129,6 @@ textarea {
   margin: 0 7px;
 }
 
-.idea-content {
-  padding: 10px;
-}
-
 .idea-category {
   color: white;
   float: left;
@@ -140,8 +136,13 @@ textarea {
   margin-bottom: 15px;
 }
 
+.idea-content {
+  padding: 10px;
+}
+
 .single-idea {
   display: inline-flex;
+  margin-bottom: 25px;
 }
 
 .edit-button, .delete-button {
@@ -171,10 +172,6 @@ textarea {
 @media screen and (max-width: 800px) {
   .idea-header-text {
     font-size: 26px;
-  }
-
-  p {
-    font-size: 18px;
   }
 
   .edit-button .delete-button {
