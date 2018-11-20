@@ -2,7 +2,7 @@ const createButton = document.querySelector('.create-button');
 const submitIdeaButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
 const API_URL = 'http://localhost:3000/ideas';
-const delayInMilliseconds = 100;
+const delayInMilliseconds = 200;
 
 const listIdeas = () => {
   clearIdeas();
@@ -58,11 +58,13 @@ const createIdeaElement = (idea) => {
 
   deleteButton.addEventListener('click', (event) => {
     const idea = ideaParagraph.innerText;
+    const password = prompt('Please enter the password to change the text');
 
     fetch(API_URL, {
       method: 'DELETE',
       body: JSON.stringify({
-        idea
+        idea,
+        password
       }),
       headers: {
         'content-type': 'application/json'
@@ -76,12 +78,14 @@ const createIdeaElement = (idea) => {
   submitEditButton.addEventListener('click', (event) => {
     const originalIdea = ideaParagraph.innerText;
     const editedIdea = editTextArea.value;
+    const password = prompt('Please enter the password to change the text');
 
     fetch(API_URL, {
       method: 'PUT',
       body: JSON.stringify({
         originalIdea,
-        editedIdea
+        editedIdea,
+        password
       }),
       headers: {
         'content-type': 'application/json'
@@ -117,29 +121,35 @@ createButton.addEventListener('click', (event) => {
 
 submitIdeaButton.addEventListener('click', (event) => {
   event.preventDefault();
+  const categoryWarning = document.querySelector('.no-category-warning');
   const formData = new FormData(ideaForm);
   const idea = formData.get('idea');
   const category = formData.get('category');
-  console.log(category);
+  const password = formData.get('password');
   
-  fetch(API_URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      idea,
-      category
-    }),
-    headers: {
-      'content-type': 'application/json'
-    }
-  })
-  .then(res => {
-    setTimeout(listIdeas, delayInMilliseconds);
-  });
-
-  createButton.style.display = 'inline-block';
-  ideaForm.style.display = 'none';
-
-  ideaForm.reset();
+  if (!category) {
+    categoryWarning.style.display = 'block';
+  }
+  else {
+    fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        idea,
+        category,
+        password
+      }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => {
+      setTimeout(listIdeas, delayInMilliseconds);
+    });
+  
+    createButton.style.display = 'inline-block';
+    ideaForm.style.display = categoryWarning.style.display = 'none';
+    ideaForm.reset();
+  }
 });
 
 listIdeas();
