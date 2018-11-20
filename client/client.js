@@ -28,7 +28,6 @@ const clearIdeas = () => {
 }
 
 const createIdeaElement = (idea) => {
-  
   const parentContainer = document.createElement('div');
   const editButton = document.createElement('i');
   const submitEditButton = document.createElement('i');
@@ -121,6 +120,7 @@ submitIdeaButton.addEventListener('click', (event) => {
   const formData = new FormData(ideaForm);
   const idea = formData.get('idea');
   const category = formData.get('category');
+  console.log(category);
   
   fetch(API_URL, {
     method: 'POST',
