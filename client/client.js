@@ -1,7 +1,7 @@
 const createButton = document.querySelector('.create-button');
 const submitIdeaButton = document.querySelector('.idea-submit');
 const ideaForm = document.querySelector('.idea-form');
-const API_URL = 'http://localhost:3000/ideas';
+const API_URL = 'https://pearsonideaserver.now.sh/ideas';
 const delayInMilliseconds = 200;
 
 const listIdeas = () => {

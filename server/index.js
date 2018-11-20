@@ -3,7 +3,7 @@ const cors = require('cors');
 const pg = require('pg');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 443;
 const dbConnectionString = '';
 
 app.use(express.json());
