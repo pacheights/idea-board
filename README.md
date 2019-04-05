@@ -2,6 +2,8 @@
 
 Idea Collection is a website that keeps track of all of my app/business/music/film ideas
 
+See a live version [here](https://pearsonsideas.now.sh)
+
 ## Installation
 
 ### Requirements
