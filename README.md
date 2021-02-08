@@ -3,7 +3,7 @@
 Idea Collection is a website that keeps track of all of my
 app/business/music/film ideas
 
-See a live version [here](https://pearsonsideas.now.sh)
+See a live version [here](urlwee.com/pbidea) urlwee.com/pbidea
 
 ## Installation
 
