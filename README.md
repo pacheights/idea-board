@@ -1,7 +1,7 @@
-# Idea Collection![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+# Idea Board![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-Idea Collection is a website that keeps track of all of my
-app/business/music/film ideas
+Idea Board is a website that keeps track of all of my app/business/music/film
+ideas
 
 See a live version [here](http://urlwee.com/pbidea)
 
